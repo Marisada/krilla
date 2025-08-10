@@ -119,19 +119,19 @@ impl Font {
     }
 
     // For now, location will always be default, until we support variable fonts.
-    pub(crate) fn location_ref(&self) -> LocationRef {
+    pub(crate) fn location_ref(&self) -> LocationRef<'_> {
         (&self.0.font_info.location).into()
     }
 
-    pub(crate) fn font_ref(&self) -> &FontRef {
+    pub(crate) fn font_ref(&self) -> &FontRef<'_> {
         &self.0.font_ref_yoke.get().font_ref
     }
 
-    pub(crate) fn glyph_metrics(&self) -> &GlyphMetrics {
+    pub(crate) fn glyph_metrics(&self) -> &GlyphMetrics<'_> {
         &self.0.font_ref_yoke.get().glyph_metrics
     }
 
-    pub(crate) fn outline_glyphs(&self) -> &OutlineGlyphCollection {
+    pub(crate) fn outline_glyphs(&self) -> &OutlineGlyphCollection<'_> {
         &self.0.font_ref_yoke.get().outline_glyphs
     }
 

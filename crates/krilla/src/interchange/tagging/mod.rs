@@ -196,7 +196,7 @@ pub enum ContentTag<'a> {
 }
 
 impl ContentTag<'_> {
-    pub(crate) fn name(&self) -> Name {
+    pub(crate) fn name(&self) -> Name<'_> {
         match self {
             ContentTag::Artifact(_) => Name(b"Artifact"),
             ContentTag::Span(_) => Name(b"Span"),
