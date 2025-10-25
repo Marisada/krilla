@@ -19,7 +19,7 @@ use crate::graphics::icc::{ICCBasedColorSpace, ICCProfile};
 use crate::graphics::image::Image;
 use crate::interactive::destination::{NamedDestination, XyzDestination};
 use crate::interchange::embed::EmbeddedFile;
-use crate::interchange::metadata::Metadata;
+use crate::interchange::metadata::{Metadata, PdfSig};
 use crate::interchange::outline::Outline;
 use crate::interchange::tagging::{AnnotationIdentifier, PageTagIdentifier, TagTree};
 use crate::page::{InternalPage, PageLabel, PageLabelContainer};
@@ -239,6 +239,7 @@ pub(crate) struct SerializeContext {
     limits: Limits,
     /// The current location, if set.
     pub(crate) location: Option<Location>,
+    pub(crate) signer: Option<PdfSig>,
 }
 
 impl SerializeContext {
@@ -268,7 +269,12 @@ impl SerializeContext {
             validation_errors: vec![],
             serialize_settings: Arc::new(serialize_settings),
             limits: Limits::new(),
+            signer: None,
         }
+    }
+
+    pub(crate) fn set_signer(&mut self, sig: PdfSig) {
+        self.signer = Some(sig)
     }
 
     pub(crate) fn page_infos(&self) -> &[PageInfo] {
