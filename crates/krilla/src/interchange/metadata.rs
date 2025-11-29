@@ -475,3 +475,12 @@ impl PageLayout {
         }
     }
 }
+
+#[allow(missing_docs)]
+#[derive(Clone, Debug)]
+pub struct PdfSig {
+    pub name: String,
+    pub location: String,
+    pub reason: String,
+    pub contact_info: String,
+}
