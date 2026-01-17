@@ -16,7 +16,7 @@
 
 use crate::error::KrillaResult;
 use crate::interchange::embed::EmbeddedFile;
-use crate::interchange::metadata::Metadata;
+use crate::interchange::metadata::{Metadata, PdfSig};
 use crate::interchange::outline::Outline;
 use crate::interchange::tagging::TagTree;
 use crate::page::{Page, PageSettings};
@@ -97,6 +97,11 @@ impl Document {
     /// Set the tag tree of the document.
     pub fn set_tag_tree(&mut self, tag_tree: TagTree) {
         self.serializer_context.set_tag_tree(tag_tree);
+    }
+
+    /// Set the Signer of the document.
+    pub fn set_signer(&mut self, sig: PdfSig) {
+        self.serializer_context.set_signer(sig);
     }
 
     /// Embed a new file in the PDF document.
