@@ -477,7 +477,7 @@ impl PageLayout {
 }
 
 #[allow(missing_docs)]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Hash)]
 pub struct PdfSig {
     pub name: String,
     pub location: String,
