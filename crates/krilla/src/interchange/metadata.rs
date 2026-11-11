@@ -553,6 +553,15 @@ impl PageLayout {
     }
 }
 
+#[allow(missing_docs)]
+#[derive(Clone, Debug, Default, PartialEq, Eq, Hash)]
+pub struct PdfSig {
+    pub name: String,
+    pub location: String,
+    pub reason: String,
+    pub contact_info: String,
+}
+
 #[cfg(test)]
 mod tests {
     use super::Metadata;
